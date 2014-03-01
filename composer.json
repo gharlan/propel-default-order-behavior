@@ -1,0 +1,29 @@
+{
+    "name": "gharlan/propel-default-order-behavior",
+    "description": "DefaultOrderBehavior for Propel2",
+    "type": "propel-behavior",
+    "license": "MIT",
+    "keywords": ["propel", "behavior", "default order"],
+    "authors": [
+        {
+            "name": "Gregor Harlan",
+            "homepage": "https://github.com/gharlan"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "GHarlan\\Propel\\Behavior\\DefaultOrder\\" : "src"
+        }
+    },
+    "require": {
+        "php": ">=5.4",
+        "propel/propel": "~2.0@dev"
+    },
+    "extra": {
+        "name": "default-order",
+        "class": "GHarlan\\Propel\\Behavior\\DefaultOrder\\DefaultOrderBehavior",
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
