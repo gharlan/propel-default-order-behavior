@@ -26,16 +26,13 @@ class DefaultOrderBehavior extends Behavior
     {
         $columns = [];
 
-        foreach ($this->getParameters() as $key => $value) {
-            if (0 !== strpos($key, 'column')) {
-                continue;
-            }
-            $column = $this->getColumnForParameter($key);
+        foreach ($this->getParameters() as $parameter) {
+            $parameter = explode(' ', $parameter);
+
+            $column = $this->getTable()->getColumn($parameter[0]);
             $columnConstant = $builder->getColumnConstant($column);
 
-            $directionKey = 'direction' . substr($key, 6);
-            $direction = isset($this->parameters[$directionKey]) ? $this->getParameter($directionKey) : Criteria::ASC;
-            $direction = strtoupper($direction);
+            $direction = isset($parameter[1]) ? strtoupper($parameter[1]) : Criteria::ASC;
             switch ($direction) {
                 case Criteria::ASC:
                     $columns[$columnConstant] = 'Ascending';

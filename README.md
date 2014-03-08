@@ -35,8 +35,7 @@ Usage
 
         <behavior name="default-order">
             <parameter name="column1" value="title"/>
-            <parameter name="column2" value="id"/>
-            <parameter name="direction2" value="desc"/>
+            <parameter name="column2" value="id desc"/>
         </behavior>
     </table>
 ```
