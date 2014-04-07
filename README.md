@@ -11,7 +11,7 @@ Add the package to your `composer.json`:
 ```json
 {
     "require": {
-        "gharlan/default-order-behavior": "~1.0@dev"
+        "gharlan/propel-default-order-behavior": "~1.0@dev"
     }
 }
 ```
