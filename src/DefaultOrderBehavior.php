@@ -49,7 +49,7 @@ class DefaultOrderBehavior extends Behavior
             throw new InvalidArgumentException('DefaultOrderBehavior needs at least one column parameter');
         }
 
-        $script = 'if (!$this->getOrderByColumns()) {
+        $script = 'if ($this->defaultOrder && !$this->getOrderByColumns()) {
     $this';
 
         $prefix = '';
@@ -65,5 +65,34 @@ class DefaultOrderBehavior extends Behavior
 }';
 
         return $script;
+    }
+
+    public function queryAttributes($builder)
+    {
+        return '
+/**
+ * Whether the default order is enabled
+ */
+private $defaultOrder = true;
+';
+    }
+
+    public function queryMethods($builder)
+    {
+        return '
+/**
+ * Whether the default order should be applied
+ *
+ * @param bool $defaultOrder
+ *
+ * @return $this|$queryClassName The current query, for fluid interface
+ */
+public function useDefaultOrder($defaultOrder)
+{
+    $this->defaultOrder = $defaultOrder;
+    
+    return $this;
+}
+';
     }
 }
